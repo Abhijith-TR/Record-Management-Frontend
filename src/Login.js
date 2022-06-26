@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
+import { useGlobalContext } from "./context";
 
-const Login = ({ setLoggedIn, setIsAdmin }) => {
+const Login = () => {
+  const { setLoggedIn, setIsAdmin } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -79,7 +81,7 @@ const Login = ({ setLoggedIn, setIsAdmin }) => {
             Login
           </button>
         </form>
-        <div style={{ marginBottom: "2rem" }}>
+        <div style={{ marginBottom: "1.5rem" }}>
           {error ? <h5 className="error">{errMsg}</h5> : <></>}
         </div>
       </div>

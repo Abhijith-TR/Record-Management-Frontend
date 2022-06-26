@@ -12,7 +12,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f7fcf8;
 }
 
 /* code {
@@ -25,9 +24,11 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 0.5fr 0.5fr 0.5fr;
   height: 100vh;
+  background: #f7fcf8;
 }
 
 .login-form {
+  padding-top: 0.8rem;
   border: 3px solid #efefef;
   grid-row: 2;
   grid-column: 2;
@@ -50,6 +51,18 @@ body {
   color: black;
 }
 
+.record-search {
+  margin-top: 1rem;
+  display: grid;
+  justify-content: space-around;
+}
+
+.login-input-alt {
+  border: 1px solid black;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 .submit-btn {
   background: var(--clr-primary-8);
   border-color: transparent;
@@ -63,9 +76,16 @@ body {
   cursor: pointer;
   content: var(--clr-primary-5);
   font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.submit-btn-alt {
+  background-color: #e17063;
 }
 
 .error {
+  font-size: 1rem;
+  margin-top: 0.8rem;
   text-align: center;
   color: tomato;
   font-weight: 500;
@@ -111,10 +131,34 @@ nav {
 
 .navbar {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .irms-name {
   font-size: 2rem;
   font-weight: 600;
   color: white;
+}
+
+.page-headings {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.navbar-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 40rem;
+}
+
+.navbar-single-link {
+  color: white;
+  font-weight: 500;
+}
+
+.navbar-single-link:hover {
+  transform: scale(1.2);
 }
