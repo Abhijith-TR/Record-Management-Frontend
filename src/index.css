@@ -70,3 +70,51 @@ body {
   color: tomato;
   font-weight: 500;
 }
+
+nav {
+  background-color: azure;
+  display: flex;
+  justify-content: space-around;
+  height: 4rem;
+  align-items: center;
+}
+
+.page {
+  background-color: white;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  display: block;
+  height: 100vh;
+  background-color: #f6f3ff;
+  border-radius: 3%;
+}
+
+.sidebar h1 {
+  color: #e17063;
+  text-align: center;
+  margin-top: 0px;
+  font-size: 1.5rem;
+  padding-top: 0.5rem;
+}
+
+.links {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.links:hover {
+  font-size: 1.1rem;
+}
+
+.navbar {
+  display: flex;
+}
+
+.irms-name {
+  font-size: 2rem;
+  font-weight: 600;
+  color: white;
+}

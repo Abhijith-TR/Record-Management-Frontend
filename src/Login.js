@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 
-const Login = ({ setLoggedIn }) => {
+const Login = ({ setLoggedIn, setIsAdmin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -27,10 +27,25 @@ const Login = ({ setLoggedIn }) => {
       localStorage.setItem("Authorization", "Bearer " + data.token);
       setLoggedIn(true);
       setError(false);
+      setIsAdmin(1);
     } catch (error) {
-      setErrMsg(error.response.data.msg);
-      setError(true);
+      try {
+        const { data } = await axios.post(
+          "https://irms-server.herokuapp.com/api/authorize/user",
+          {
+            email,
+            password,
+          }
+        );
+        localStorage.setItem("Authorization", "Bearer " + data.token);
+        setLoggedIn(true);
+        setError(false);
+      } catch (error) {
+        setErrMsg(error.response.data.msg);
+        setError(true);
+      }
     }
+
     setEmail("");
     setPassword("");
   };
