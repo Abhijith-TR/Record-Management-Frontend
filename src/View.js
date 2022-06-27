@@ -21,6 +21,7 @@ const View = () => {
   }, [error]);
 
   const getRecords = async (e) => {
+    const token = localStorage.getItem("Authorization");
     e.preventDefault();
     if (!searchValue) {
       setError(true);
@@ -31,8 +32,7 @@ const View = () => {
           `https://irms-server.herokuapp.com/api/admin/records/get/${searchValue}`,
           {
             headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoiNjJiNDdkNTM4YzhkMWJlZDdjZjc3MTY0IiwibmFtZSI6IkpvaG4gRG9lIiwiaXNBZG1pbiI6dHJ1ZSwiaXNTdXBlciI6dHJ1ZSwiaWF0IjoxNjU2MzA1NDYyLCJleHAiOjE2NTYzNDE0NjJ9.wqfM_z25uxanGzYwwE-eSyxO5gjtFSN3JY-lD_sTivs",
+              Authorization: token,
             },
           }
         );
@@ -47,8 +47,7 @@ const View = () => {
           `https://irms-server.herokuapp.com/api/admin/records/${searchValue}`,
           {
             headers: {
-              Authorization:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbklkIjoiNjJiNDdkNTM4YzhkMWJlZDdjZjc3MTY0IiwibmFtZSI6IkpvaG4gRG9lIiwiaXNBZG1pbiI6dHJ1ZSwiaXNTdXBlciI6dHJ1ZSwiaWF0IjoxNjU2MzA1NDYyLCJleHAiOjE2NTYzNDE0NjJ9.wqfM_z25uxanGzYwwE-eSyxO5gjtFSN3JY-lD_sTivs",
+              Authorization: token,
             },
           }
         );

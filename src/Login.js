@@ -65,7 +65,7 @@ const Login = () => {
             className="login-input"
           />
           <input
-            type="text"
+            type="password"
             placeholder="Password"
             style={{ marginTop: "1rem" }}
             onChange={(e) => setPassword(e.target.value)}
