@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import RecordCard from "./RecordCard";
 import axios from "axios";
 
 const View = () => {
@@ -36,8 +37,7 @@ const View = () => {
             },
           }
         );
-        setRecords(data.records);
-        console.log(records);
+        setRecords(() => data.records);
       } catch (error) {
         setError(true);
         setErrMsg(error.response.data.msg);
@@ -53,8 +53,7 @@ const View = () => {
             },
           }
         );
-        setRecords(data.records);
-        console.log(records);
+        setRecords(() => data.records);
       } catch (error) {
         setError(true);
         setErrMsg(error.response.data.msg);
@@ -62,6 +61,10 @@ const View = () => {
     }
     setSearchValue("");
   };
+
+  useEffect(() => {
+    console.log(records);
+  }, [records]);
 
   return (
     <>
@@ -93,6 +96,11 @@ const View = () => {
         </form>
         <div className="error">{error ? errMsg : ""}</div>
       </div>
+      <RecordCard
+        subjectName="Computer Architecture"
+        subjectCode="CS204"
+        grade="-"
+      />
     </>
   );
 };

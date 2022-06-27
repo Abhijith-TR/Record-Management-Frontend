@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Oswald&display=swap");
+
 :root {
   --radius: 0.25rem;
   --clr-primary-5: hsl(205, 78%, 60%);
@@ -58,6 +60,7 @@ body {
 }
 
 .login-input-alt {
+  text-align: center;
   border: 1px solid black;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -161,4 +164,25 @@ nav {
 
 .navbar-single-link:hover {
   transform: scale(1.2);
+}
+
+.record-card {
+  border: 2px solid black;
+  height: 3rem;
+  justify-content: center;
+  place-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 3fr 1fr;
+  margin-top: 0.5rem;
+  background-color: hsl(205, 86%, 95%);
+}
+
+.course-name {
+  font-weight: 500;
+  font-size: 1.1rem;
+  font-family: Nunito;
+}
+
+.course-grade {
+  font-size: 1.5rem;
 }
