@@ -1,37 +1,33 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
 
-const AddSubject = () => {
-  const [subjectName, setSubjectName] = useState("");
+const DeleteRecord = () => {
+  const [entryNumber, setEntryNumber] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
   const [isErr, setIsErr] = useState(0);
-  const [errMsg, setErrMsg] = useState(0);
+  const [errMsg, setErrMsg] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    const answer = window.confirm("Are the details correct?");
+    const answer = window.confirm("Delete this record?");
     if (answer) {
       try {
         const token = localStorage.getItem("Authorization");
-        const { data } = await axios.post(
-          "https://irms-server.herokuapp.com/api/admin/records",
-          {
-            subjectName,
-            subjectCode,
-          },
+        const { data } = await axios.delete(
+          `https://irms-server.herokuapp.com/api/admin/records/${entryNumber}/${subjectCode}`,
           {
             headers: {
               Authorization: token,
             },
           }
         );
-        setErrMsg(data.msg);
         setIsErr(2);
-        setSubjectName("");
+        setErrMsg(data.msg);
+        setEntryNumber("");
         setSubjectCode("");
       } catch (error) {
         setIsErr(1);
-        setErrMsg("Invalid input");
+        setErrMsg("No such record exists");
       }
     } else {
       return;
@@ -51,14 +47,14 @@ const AddSubject = () => {
 
   return (
     <div style={{ border: "2px solid black", padding: "1.5rem" }}>
-      <h2 className="section-headings">Insert Subject</h2>
-      <form className="record-search" onSubmit={handleSubmit}>
+      <h2 className="section-headings">Delete Record</h2>
+      <form className="record-search" onSubmit={handleUpdate}>
         <input
           type="text"
           className="login-input login-input-alt"
-          placeholder="Subject Name"
-          value={subjectName}
-          onChange={(e) => setSubjectName(e.target.value)}
+          placeholder="Entry Number"
+          value={entryNumber}
+          onChange={(e) => setEntryNumber(e.target.value)}
         />
         <input
           type="text"
@@ -68,12 +64,13 @@ const AddSubject = () => {
           onChange={(e) => setSubjectCode(e.target.value)}
           style={{ marginTop: "0.5rem" }}
         />
+
         <button
           type="submit"
           className="submit-btn submit-btn-alt"
           style={{ marginTop: "0.5rem" }}
         >
-          Insert
+          Delete
         </button>
       </form>
       <div
@@ -86,4 +83,4 @@ const AddSubject = () => {
   );
 };
 
-export default AddSubject;
+export default DeleteRecord;
