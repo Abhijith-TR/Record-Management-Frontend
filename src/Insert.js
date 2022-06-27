@@ -3,9 +3,9 @@ import axios from "axios";
 
 const Insert = () => {
   const [entryNumber, setEntryNumber] = useState("");
-  const [grade, setGrade] = useState("");
+  const [grade, setGrade] = useState("Select the Grade");
   const [subjectCode, setSubjectCode] = useState("");
-  const [semester, setSemester] = useState("");
+  const [semester, setSemester] = useState("Select the Semester");
   const [isErr, setIsErr] = useState(0);
   const [errMsg, setErrMsg] = useState("");
 
@@ -75,10 +75,9 @@ const Insert = () => {
         <select
           className="login-input login-input-alt"
           style={{ marginTop: "0.5rem" }}
-          value={grade}
           onChange={(e) => setGrade(e.target.value)}
         >
-          <option value="" disabled selected style={{}}>
+          <option value="" disabled selected>
             Select the Grade
           </option>
           <option value="A">A</option>
@@ -99,10 +98,9 @@ const Insert = () => {
         <select
           className="login-input login-input-alt"
           style={{ marginTop: "0.5rem" }}
-          value={semester}
           onChange={(e) => setSemester(e.target.value)}
         >
-          <option value="" disabled selected style={{}}>
+          <option value="" disabled selected>
             Select the Semester
           </option>
           <option value="1">1</option>

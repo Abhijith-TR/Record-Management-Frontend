@@ -1,6 +1,6 @@
 import View from "./View";
 import Admin from "./Admin";
-import Update from "./Update";
+import UpdateTab from "./UpdateTab";
 import { useGlobalContext } from "./context";
 
 const Content = () => {
@@ -10,7 +10,7 @@ const Content = () => {
   } else if (displayAdmin) {
     return <Admin />;
   } else if (displayUpdate) {
-    return <Update />;
+    return <UpdateTab />;
   }
 };
 

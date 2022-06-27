@@ -1,11 +1,12 @@
 import Insert from "./Insert";
+import AddSubject from "./AddSubject";
 
-const Update = () => {
+const UpdateTab = () => {
   return (
     <>
       <div className="update">
         <Insert />
-        <div>Add subject</div>
+        <AddSubject />
         <div>Update Record</div>
         <div>Delete Record</div>
       </div>
@@ -13,4 +14,4 @@ const Update = () => {
   );
 };
 
-export default Update;
+export default UpdateTab;
