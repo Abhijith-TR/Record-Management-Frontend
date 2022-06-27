@@ -50,7 +50,7 @@ const AddSubject = () => {
   }, [isErr]);
 
   return (
-    <div>
+    <div style={{ border: "2px solid black", padding: "2rem" }}>
       <h2 className="section-headings">Insert Subject</h2>
       <form className="record-search" onSubmit={handleSubmit}>
         <input

@@ -1,5 +1,6 @@
 import Insert from "./Insert";
 import AddSubject from "./AddSubject";
+import UpdateRecord from "./UpdateRecord";
 
 const UpdateTab = () => {
   return (
@@ -7,7 +8,7 @@ const UpdateTab = () => {
       <div className="update">
         <Insert />
         <AddSubject />
-        <div>Update Record</div>
+        <UpdateRecord />
         <div>Delete Record</div>
       </div>
     </>

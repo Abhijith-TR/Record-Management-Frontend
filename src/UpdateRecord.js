@@ -1,28 +1,24 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const Insert = () => {
+const UpdateRecord = () => {
   const [entryNumber, setEntryNumber] = useState("");
-  const [grade, setGrade] = useState("Select the Grade");
   const [subjectCode, setSubjectCode] = useState("");
-  const [semester, setSemester] = useState("Select the Semester");
+  const [grade, setGrade] = useState("");
   const [isErr, setIsErr] = useState(0);
   const [errMsg, setErrMsg] = useState("");
 
   const handleUpdate = async (e) => {
     e.preventDefault();
-    const answer = window.confirm("Are the details correct?");
+    const answer = window.confirm("Are you sure you want to update?");
     if (answer) {
-      const token = localStorage.getItem("Authorization");
       try {
-        console.log(entryNumber, grade, subjectCode, semester);
-        const { data } = await axios.post(
-          "https://irms-server.herokuapp.com/api/admin/records/single",
+        console.log("Here");
+        const token = localStorage.getItem("Authorization");
+        const { data } = await axios.patch(
+          `https://irms-server.herokuapp.com/api/admin/records/${entryNumber}/${subjectCode}`,
           {
-            entryNumber,
             grade,
-            subjectCode,
-            semester,
           },
           {
             headers: {
@@ -30,12 +26,13 @@ const Insert = () => {
             },
           }
         );
-        setErrMsg(data.msg);
+        console.log(data);
         setIsErr(2);
         setErrMsg(data.msg);
       } catch (error) {
+        console.log(error.response.data.msg);
         setIsErr(1);
-        setErrMsg("Please check the entry again");
+        setErrMsg("Please check info");
       }
     } else {
       return;
@@ -55,7 +52,7 @@ const Insert = () => {
 
   return (
     <div style={{ border: "2px solid black", padding: "1.5rem" }}>
-      <h2 className="section-headings">Insert Record</h2>
+      <h2 className="section-headings">Update Grade</h2>
       <form className="record-search" onSubmit={handleUpdate}>
         <input
           type="text"
@@ -78,7 +75,7 @@ const Insert = () => {
           onChange={(e) => setGrade(e.target.value)}
         >
           <option value="" disabled selected>
-            Select the Grade
+            Select the New Grade
           </option>
           <option value="A">A</option>
           <option value="A-">A-</option>
@@ -95,29 +92,12 @@ const Insert = () => {
           <option value="W">W</option>
           <option value="-">-</option>
         </select>
-        <select
-          className="login-input login-input-alt"
-          style={{ marginTop: "0.5rem" }}
-          onChange={(e) => setSemester(e.target.value)}
-        >
-          <option value="" disabled selected>
-            Select the Semester
-          </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-        </select>
         <button
           type="submit"
           className="submit-btn submit-btn-alt"
           style={{ marginTop: "0.5rem" }}
         >
-          Insert
+          Update
         </button>
       </form>
       <div
@@ -130,4 +110,4 @@ const Insert = () => {
   );
 };
 
-export default Insert;
+export default UpdateRecord;
