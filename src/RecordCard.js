@@ -1,16 +1,20 @@
 import { useEffect, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 
-const RecordCard = ({ subjectName, subjectCode, grade }) => {
+const RecordCard = (props) => {
   const [color, setColor] = useState("");
-
+  const { subjectName, subjectCode, grade, entryNumber, display, semester } =
+    props;
   useEffect(() => {
-    if (grade[0] === "A") setColor("green");
+    if (typeof grade === "undefined") setColor("");
+    else if (grade[0] === "A") setColor("green");
     else if (grade[0] === "B") setColor("#EAA001");
     else if (grade[0] === "C") setColor("#C06800");
     else if (grade[0] === "-") setColor("gray");
     else setColor("#D63C31");
   }, [grade]);
+
+  if (Object.keys(props).length === 0) return <></>;
 
   return (
     <div
@@ -26,11 +30,12 @@ const RecordCard = ({ subjectName, subjectCode, grade }) => {
             {<FaAngleDown size={30} />}
           </button>
         </div>
-        <div className="course-name">{subjectCode}</div>
+        <div className="course-name">{display ? entryNumber : subjectCode}</div>
         <div className="course-name">{subjectName}</div>
         <div className="course-name course-grade" style={{ color: color }}>
           {grade}
         </div>
+        <div className="course-name semester-name">{semester}</div>
       </article>
     </div>
   );

@@ -21,7 +21,6 @@ const View = () => {
   }, [error]);
 
   const getRecords = async (e) => {
-    console.log(subjectCode);
     e.preventDefault();
     if (!searchValue) {
       setError(true);
@@ -62,10 +61,6 @@ const View = () => {
     setSearchValue("");
   };
 
-  useEffect(() => {
-    console.log(records);
-  }, [records]);
-
   return (
     <>
       <div>
@@ -96,11 +91,28 @@ const View = () => {
         </form>
         <div className="error">{error ? errMsg : ""}</div>
       </div>
-      <RecordCard
-        subjectName="Computer Architecture"
-        subjectCode="CS204"
-        grade="-"
-      />
+      {records
+        .sort((a, b) => a.semester - b.semester)
+        .map((item, index) => {
+          const {
+            subjectCode: subCode,
+            subjectName,
+            grade,
+            semester,
+            entryNumber,
+          } = item;
+          return (
+            <RecordCard
+              display={subjectCode}
+              entryNumber={entryNumber}
+              subjectName={subjectName}
+              subjectCode={subCode}
+              grade={grade}
+              key={index}
+              semester={semester}
+            />
+          );
+        })}
     </>
   );
 };

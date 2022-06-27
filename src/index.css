@@ -168,11 +168,11 @@ nav {
 
 .record-card {
   border: 2px solid black;
-  height: 3rem;
+  height: 2.5rem;
   justify-content: center;
   place-items: center;
   display: grid;
-  grid-template-columns: 1fr 2fr 3fr 1fr;
+  grid-template-columns: 1fr 1fr 3fr 0.5fr 0.5fr;
   margin-top: 0.5rem;
   background-color: hsl(205, 86%, 95%);
 }
@@ -184,5 +184,9 @@ nav {
 }
 
 .course-grade {
+  font-size: 1.5rem;
+}
+
+.semester-name {
   font-size: 1.5rem;
 }
