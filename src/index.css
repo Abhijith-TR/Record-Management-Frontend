@@ -171,8 +171,10 @@ nav {
   font-weight: 500;
 }
 
-.navbar-single-link:hover {
-  transform: scale(1.2);
+@media screen and (min-width: 1176px) {
+  .navbar-single-link:hover {
+    transform: scale(1.2);
+  }
 }
 
 .record-card-holder {
@@ -195,9 +197,7 @@ nav {
 @media screen and (max-width: 1176px) {
   .record-card {
     height: fit-content;
-  }
-  .record-card-holder {
-    display: block;
+    font-size: 0.5rem;
   }
 }
 
@@ -222,4 +222,25 @@ nav {
   place-items: center;
   justify-content: center;
   height: 100vh;
+}
+
+@media screen and (max-width: 400px) {
+  .login-input {
+    width: 90vw;
+  }
+  .navbar-single-link {
+    font-size: 0.9rem;
+  }
+  .navbar-links {
+    display: block;
+    text-align: center;
+  }
+  .course-grade,
+  .course-name,
+  .semester-name {
+    font-size: 0.9rem;
+  }
+  .record-card-holder {
+    display: block;
+  }
 }

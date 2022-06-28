@@ -47,7 +47,7 @@ const AddUser = () => {
 
   return (
     <div style={{ border: "2px solid black", padding: "1.5rem" }}>
-      <h2 className="section-headings">Add User</h2>
+      <h2 className="section-headings">Add Student</h2>
       <form className="record-search" onSubmit={handleUpdate}>
         <input
           type="text"
