@@ -107,7 +107,7 @@ nav {
 .page {
   background-color: white;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .sidebar {
@@ -175,6 +175,12 @@ nav {
   transform: scale(1.2);
 }
 
+.record-card-holder {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+}
+
 .record-card {
   border: 2px solid black;
   height: 2.5rem;
@@ -184,6 +190,15 @@ nav {
   grid-template-columns: 1fr 1fr 3fr 0.5fr 0.5fr;
   margin-top: 0.5rem;
   background-color: hsl(205, 86%, 95%);
+}
+
+@media screen and (max-width: 1176px) {
+  .record-card {
+    height: fit-content;
+  }
+  .record-card-holder {
+    display: block;
+  }
 }
 
 .course-name {
@@ -201,9 +216,9 @@ nav {
 }
 
 .update {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
+  display: block;
+  /* grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; */
   place-items: center;
   justify-content: center;
   height: 100vh;

@@ -17,13 +17,7 @@ const RecordCard = (props) => {
   if (Object.keys(props).length === 0) return <></>;
 
   return (
-    <div
-      style={{
-        textAlign: "center",
-        display: "grid",
-        gridTemplateColumns: "1fr 3fr 1fr",
-      }}
-    >
+    <div className="record-card-holder">
       <article className="record-card" style={{ gridColumn: "2" }}>
         <div>
           <button style={{ border: "none", background: "hsl(205, 86%, 95%)" }}>
