@@ -275,6 +275,14 @@ nav {
   height: 100vh;
 }
 
+@media screen and (max-width: 800px) {
+  .navbar-links {
+    display: block;
+    text-align: center;
+    height: fit-content;
+  }
+}
+
 @media screen and (max-width: 400px) {
   .login-input {
     width: 90vw;
@@ -284,11 +292,6 @@ nav {
   }
   .navbar-single-link {
     font-size: 0.9rem;
-  }
-  .navbar-links {
-    display: block;
-    text-align: center;
-    height: fit-content;
   }
   .course-grade,
   .course-name,
