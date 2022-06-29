@@ -31,7 +31,12 @@ const NavbarChanged = () => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" className="navbar">
+    <Navbar
+      bg="dark"
+      variant="dark"
+      className="navbar"
+      style={{ height: "fit-content" }}
+    >
       <Container>
         <div className="irms-name">IRMS</div>
         <div className="navbar-links">
