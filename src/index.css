@@ -59,6 +59,7 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 0.5fr 0.5fr 0.5fr;
   height: 100vh;
+  /* background-color: #feba33; */
   background-image: url("../public/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -67,41 +68,46 @@ body {
 
 .login-form {
   padding-top: 0.8rem;
-  border: 3px solid #efefef;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  /* border: 3px solid #efefef; */
   grid-row: 2;
   grid-column: 2;
   justify-content: center;
   text-align: center;
   /* background: white; */
-  border-radius: 15px;
+  /* border-radius: 15px; */
   background-image: linear-gradient(to bottom, #7578fc, #b225ee);
-  box-shadow: 0.1rem;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.564);
 }
 
 .login-input {
   padding: 0.25rem;
   padding-left: 1rem;
   background: hsl(210, 36%, 96%);
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
-  border-color: transparent;
+  border: 1px solid black;
   font-size: 1rem;
   width: 20rem;
   scale: 1;
   color: black;
 }
 
-.record-search {
-  margin-top: 1rem;
-  display: grid;
-  justify-content: space-around;
+.login-input-screen {
+  background-color: white;
+  border: none;
+  border-radius: 8px;
 }
 
 .login-input-alt {
   text-align: center;
-  border: 1px solid black;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.record-search {
+  margin-top: 1rem;
+  display: grid;
+  justify-content: space-around;
 }
 
 .submit-btn {
@@ -117,6 +123,13 @@ body {
   content: var(--clr-primary-5);
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+.submit-btn-screen {
+  background-color: white;
+  width: 20rem;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .submit-btn-alt {
@@ -264,6 +277,9 @@ nav {
 
 @media screen and (max-width: 400px) {
   .login-input {
+    width: 90vw;
+  }
+  .submit-btn-screen {
     width: 90vw;
   }
   .navbar-single-link {

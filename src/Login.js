@@ -56,14 +56,14 @@ const Login = () => {
   return (
     <div className="login-container">
       <div className="login-form">
-        <h1>IRMS</h1>
+        <h1 style={{ fontSize: "2.5rem", color: "#FBFCF8" }}>IRMS</h1>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Email"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            className="login-input"
+            className="login-input login-input-screen"
           />
           <input
             type="password"
@@ -71,19 +71,31 @@ const Login = () => {
             style={{ marginTop: "1rem" }}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
-            className="login-input"
+            className="login-input login-input-screen"
           />{" "}
           <br />
           <button
             type="submit"
             style={{ marginTop: "1rem" }}
-            className="submit-btn"
+            className="submit-btn submit-btn-screen"
           >
             Login
           </button>
         </form>
-        <div style={{ marginBottom: "1.5rem", background: "white" }}>
-          {error ? <h5 className="error">{errMsg}</h5> : <></>}
+        <div
+          style={{
+            marginBottom: "1.5rem",
+            marginLeft: "4rem",
+            marginRight: "4rem",
+          }}
+        >
+          {error ? (
+            <h5 className="error" style={{ color: "white" }}>
+              {errMsg}
+            </h5>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
     </div>
