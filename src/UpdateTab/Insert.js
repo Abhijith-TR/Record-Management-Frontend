@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ImSpinner6 } from "react-icons/im";
 
 const Insert = () => {
+  const [loading, setLoading] = useState(false);
   const [entryNumber, setEntryNumber] = useState("");
   const [grade, setGrade] = useState("Select the Grade");
   const [subjectCode, setSubjectCode] = useState("");
@@ -13,6 +15,7 @@ const Insert = () => {
     e.preventDefault();
     const answer = window.confirm("Are the details correct?");
     if (answer) {
+      setLoading(true);
       const token = localStorage.getItem("Authorization");
       try {
         console.log(entryNumber, grade, subjectCode, semester);
@@ -30,10 +33,12 @@ const Insert = () => {
             },
           }
         );
+        setLoading(false);
         setErrMsg(data.msg);
         setIsErr(2);
         setErrMsg(data.msg);
       } catch (error) {
+        setLoading(false);
         setIsErr(1);
         setErrMsg("Please check the entry again");
       }
@@ -120,6 +125,9 @@ const Insert = () => {
           Insert
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}

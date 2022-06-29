@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import RecordCard from "./RecordCard";
 import axios from "axios";
 import { useGlobalContext } from "../context";
+import { ImSpinner6 } from "react-icons/im";
 
 const View = () => {
+  const [loading, setLoading] = useState(false);
   const { isAdmin } = useGlobalContext();
   const [records, setRecords] = useState([]);
   const [subjectCode, setSubjectCode] = useState(false);
@@ -29,6 +31,7 @@ const View = () => {
       setError(true);
       setErrMsg("Invalid Input");
     } else if (!subjectCode) {
+      setLoading(true);
       const url = isAdmin
         ? `https://irms-server.herokuapp.com/api/admin/records/get/${searchValue}`
         : `https://irms-server.herokuapp.com/api/user/records/${searchValue}`;
@@ -38,12 +41,14 @@ const View = () => {
             Authorization: token,
           },
         });
+        setLoading(false);
         if (data.records.length === 0) {
           setError(true);
           setErrMsg("No records for the given student");
         }
         setRecords(() => data.records);
       } catch (error) {
+        setLoading(false);
         setError(true);
         setErrMsg(error.response.data.msg);
       }
@@ -57,12 +62,14 @@ const View = () => {
             },
           }
         );
+        setLoading(false);
         if (data.records.length === 0) {
           setError(true);
           setErrMsg("No records for the given subject");
         }
         setRecords(() => data.records);
       } catch (error) {
+        setLoading(false);
         setError(true);
         setErrMsg(error.response.data.msg);
       }
@@ -100,6 +107,9 @@ const View = () => {
             Search
           </button>
         </form>
+        <div className="error" style={{ color: "black" }}>
+          {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+        </div>
         <div className="error">{error ? errMsg : ""}</div>
       </div>
       {records

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ImSpinner6 } from "react-icons/im";
 
 const AddSubject = () => {
+  const [loading, setLoading] = useState(false);
   const [subjectName, setSubjectName] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
   const [isErr, setIsErr] = useState(0);
@@ -11,6 +13,7 @@ const AddSubject = () => {
     e.preventDefault();
     const answer = window.confirm("Are the details correct?");
     if (answer) {
+      setLoading(true);
       try {
         const token = localStorage.getItem("Authorization");
         const { data } = await axios.post(
@@ -25,13 +28,15 @@ const AddSubject = () => {
             },
           }
         );
+        setLoading(false);
         setErrMsg(data.msg);
         setIsErr(2);
         setSubjectName("");
         setSubjectCode("");
       } catch (error) {
+        setLoading(false);
         setIsErr(1);
-        setErrMsg("Invalid input");
+        setErrMsg("Subject already exists");
       }
     } else {
       return;
@@ -76,6 +81,9 @@ const AddSubject = () => {
           Insert
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}

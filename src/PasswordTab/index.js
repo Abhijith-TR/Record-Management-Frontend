@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useGlobalContext } from "../context";
+import { ImSpinner6 } from "react-icons/im";
 
 const ChangePassword = () => {
+  const [loading, setLoading] = useState(false);
   const { isAdmin } = useGlobalContext();
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
@@ -27,6 +29,7 @@ const ChangePassword = () => {
       setErrMsg("Password must be atleast 8 characters");
       return;
     }
+    setLoading(true);
     const route = isAdmin ? "admin" : "user";
     try {
       const token = localStorage.getItem("Authorization");
@@ -39,12 +42,14 @@ const ChangePassword = () => {
           },
         }
       );
+      setLoading(false);
       setIsErr(2);
       setErrMsg(data.msg);
       setOldPassword("");
       setNewPassword("");
       setConfirmPassword("");
     } catch (error) {
+      setLoading(false);
       setIsErr(1);
       setErrMsg(error.response.data.msg);
     }
@@ -97,6 +102,9 @@ const ChangePassword = () => {
           Change Password
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}

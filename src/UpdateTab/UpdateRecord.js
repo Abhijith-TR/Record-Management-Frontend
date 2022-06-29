@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { ImSpinner6 } from "react-icons/im";
 
 const UpdateRecord = () => {
+  const [loading, setLoading] = useState(false);
   const [entryNumber, setEntryNumber] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
   const [grade, setGrade] = useState("");
@@ -12,8 +14,8 @@ const UpdateRecord = () => {
     e.preventDefault();
     const answer = window.confirm("Are you sure you want to update?");
     if (answer) {
+      setLoading(true);
       try {
-        console.log("Here");
         const token = localStorage.getItem("Authorization");
         const { data } = await axios.patch(
           `https://irms-server.herokuapp.com/api/admin/records/${entryNumber}/${subjectCode}`,
@@ -26,11 +28,11 @@ const UpdateRecord = () => {
             },
           }
         );
-        console.log(data);
+        setLoading(false);
         setIsErr(2);
         setErrMsg(data.msg);
       } catch (error) {
-        console.log(error.response.data.msg);
+        setLoading(false);
         setIsErr(1);
         setErrMsg("Please check info");
       }
@@ -100,6 +102,9 @@ const UpdateRecord = () => {
           Update
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}

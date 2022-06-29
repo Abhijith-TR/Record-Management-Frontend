@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ImSpinner6 } from "react-icons/im";
 
 const AddAdmin = () => {
+  const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [isErr, setIsErr] = useState("");
@@ -11,6 +13,7 @@ const AddAdmin = () => {
     e.preventDefault();
     const answer = window.confirm("Are the details correct?");
     if (answer) {
+      setLoading(true);
       try {
         const token = localStorage.getItem("Authorization");
         const { data } = await axios.post(
@@ -22,13 +25,15 @@ const AddAdmin = () => {
             },
           }
         );
+        setLoading(false);
         setIsErr(2);
         setErrMsg(data.msg);
         setName("");
         setEmail("");
       } catch (error) {
+        setLoading(false);
         setIsErr(1);
-        setErrMsg("Please recheck details");
+        setErrMsg("Admin already exists");
       }
     } else {
       return;
@@ -74,6 +79,9 @@ const AddAdmin = () => {
           Register
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}

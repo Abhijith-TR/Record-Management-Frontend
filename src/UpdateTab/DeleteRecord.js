@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ImSpinner6 } from "react-icons/im";
 
 const DeleteRecord = () => {
+  const [loading, setLoading] = useState(false);
   const [entryNumber, setEntryNumber] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
   const [isErr, setIsErr] = useState(0);
@@ -11,6 +13,7 @@ const DeleteRecord = () => {
     e.preventDefault();
     const answer = window.confirm("Delete this record?");
     if (answer) {
+      setLoading(true);
       try {
         const token = localStorage.getItem("Authorization");
         const { data } = await axios.delete(
@@ -21,13 +24,15 @@ const DeleteRecord = () => {
             },
           }
         );
+        setLoading(false);
         setIsErr(2);
         setErrMsg(data.msg);
         setEntryNumber("");
         setSubjectCode("");
       } catch (error) {
+        setLoading(false);
         setIsErr(1);
-        setErrMsg("No such record exists");
+        setErrMsg(error.response.data.msg);
       }
     } else {
       return;
@@ -73,6 +78,9 @@ const DeleteRecord = () => {
           Delete
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}

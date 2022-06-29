@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useGlobalContext } from "../context";
+import { ImSpinner6 } from "react-icons/im";
 
 const RemoveAdmin = () => {
+  const [loading, setLoading] = useState(false);
   const { currUser } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [isErr, setIsErr] = useState("");
@@ -17,6 +19,7 @@ const RemoveAdmin = () => {
       return;
     }
     if (answer) {
+      setLoading(true);
       try {
         const token = localStorage.getItem("Authorization");
         const { data } = await axios.delete(
@@ -27,12 +30,14 @@ const RemoveAdmin = () => {
             },
           }
         );
+        setLoading(false);
         setIsErr(2);
         setErrMsg(data.msg);
         setEmail("");
       } catch (error) {
+        setLoading(false);
         setIsErr(1);
-        setErrMsg("Please recheck details");
+        setErrMsg("No such admin exists");
       }
     } else {
       return;
@@ -71,6 +76,9 @@ const RemoveAdmin = () => {
           Delete
         </button>
       </form>
+      <div className="error" style={{ color: "black" }}>
+        {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+      </div>
       <div
         className="error"
         style={{ color: isErr === 2 ? "green" : "tomato" }}
