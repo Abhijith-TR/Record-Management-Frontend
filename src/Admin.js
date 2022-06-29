@@ -1,5 +1,8 @@
 import AddAdmin from "./AddAdmin";
 import AddUser from "./AddUser";
+import RemoveAdmin from "./RemoveAdmin";
+import RemoveUser from "./RemoveUser";
+import ClearSubject from "./ClearSubject";
 
 const Admin = () => {
   return (
@@ -7,9 +10,9 @@ const Admin = () => {
       <div className="update">
         <AddAdmin />
         <AddUser />
-        <div>Remove Admin</div>
-        <div>Remove User</div>
-        <div>Clear Subject</div>
+        <RemoveAdmin />
+        <RemoveUser />
+        <ClearSubject />
       </div>
     </>
   );
