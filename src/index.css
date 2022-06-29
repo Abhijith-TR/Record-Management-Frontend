@@ -7,6 +7,32 @@
   --transition: all 0.3s linear;
 }
 
+*::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.776);
+}
+*:-moz-placeholder {
+  /* FF 4-18 */
+  color: rgba(0, 0, 0, 0.776);
+  opacity: 1;
+}
+*::-moz-placeholder {
+  /* FF 19+ */
+  color: rgba(0, 0, 0, 0.776);
+  opacity: 1;
+}
+*:-ms-input-placeholder {
+  /* IE 10+ */
+  color: rgba(0, 0, 0, 0.776);
+}
+*::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: rgba(0, 0, 0, 0.776);
+}
+*::placeholder {
+  /* modern browser */
+  color: rgba(0, 0, 0, 0.776);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -26,7 +52,10 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 0.5fr 0.5fr 0.5fr;
   height: 100vh;
-  background: #f7fcf8;
+  background-image: url("../public/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .login-form {
@@ -36,7 +65,9 @@ body {
   grid-column: 2;
   justify-content: center;
   text-align: center;
-  background: white;
+  /* background: white; */
+  border-radius: 15px;
+  background-image: linear-gradient(to bottom, #7578fc, #b225ee);
   box-shadow: 0.1rem;
 }
 
@@ -74,8 +105,7 @@ body {
   padding: 0.25rem;
   text-transform: capitalize;
   letter-spacing: 2px;
-  border-top-right-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+  border-radius: var(--radius);
   cursor: pointer;
   content: var(--clr-primary-5);
   font-size: 0.85rem;
@@ -184,7 +214,7 @@ nav {
 }
 
 .record-card {
-  border: 2px solid black;
+  border: 1px solid black;
   height: 2.5rem;
   justify-content: center;
   place-items: center;
@@ -192,6 +222,7 @@ nav {
   grid-template-columns: 1fr 1fr 3fr 0.5fr 0.5fr;
   margin-top: 0.5rem;
   background-color: hsl(205, 86%, 95%);
+  border-radius: 25px;
 }
 
 @media screen and (max-width: 1176px) {

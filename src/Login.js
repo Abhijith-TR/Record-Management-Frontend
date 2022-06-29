@@ -81,7 +81,7 @@ const Login = () => {
             Login
           </button>
         </form>
-        <div style={{ marginBottom: "1.5rem" }}>
+        <div style={{ marginBottom: "1.5rem", background: "white" }}>
           {error ? <h5 className="error">{errMsg}</h5> : <></>}
         </div>
       </div>
