@@ -36,6 +36,10 @@ const View = () => {
             },
           }
         );
+        if (data.records.length === 0) {
+          setError(true);
+          setErrMsg("No records for the given student");
+        }
         setRecords(() => data.records);
       } catch (error) {
         setError(true);
@@ -51,6 +55,10 @@ const View = () => {
             },
           }
         );
+        if (data.records.length === 0) {
+          setError(true);
+          setErrMsg("No records for the given subject");
+        }
         setRecords(() => data.records);
       } catch (error) {
         setError(true);
