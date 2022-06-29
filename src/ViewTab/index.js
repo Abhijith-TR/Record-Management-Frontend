@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import RecordCard from "./RecordCard";
 import axios from "axios";
+import { useGlobalContext } from "../context";
 
 const View = () => {
+  const { isAdmin } = useGlobalContext();
   const [records, setRecords] = useState([]);
   const [subjectCode, setSubjectCode] = useState(false);
   const [searchValue, setSearchValue] = useState("");
@@ -27,15 +29,15 @@ const View = () => {
       setError(true);
       setErrMsg("Invalid Input");
     } else if (!subjectCode) {
+      const url = isAdmin
+        ? `https://irms-server.herokuapp.com/api/admin/records/get/${searchValue}`
+        : `https://irms-server.herokuapp.com/api/user/records/${searchValue}`;
       try {
-        const { data } = await axios.get(
-          `https://irms-server.herokuapp.com/api/admin/records/get/${searchValue}`,
-          {
-            headers: {
-              Authorization: token,
-            },
-          }
-        );
+        const { data } = await axios.get(url, {
+          headers: {
+            Authorization: token,
+          },
+        });
         if (data.records.length === 0) {
           setError(true);
           setErrMsg("No records for the given student");
