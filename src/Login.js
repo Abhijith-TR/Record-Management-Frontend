@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useGlobalContext } from "./context";
 
 const Login = () => {
-  const { setLoggedIn, setIsAdmin } = useGlobalContext();
+  const { setLoggedIn, setIsAdmin, setCurrUser } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -30,6 +30,7 @@ const Login = () => {
       setLoggedIn(true);
       setError(false);
       setIsAdmin(data.isAdmin);
+      setCurrUser(data.email);
     } catch (error) {
       try {
         const { data } = await axios.post(

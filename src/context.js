@@ -3,6 +3,7 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
+  const [currUser, setCurrUser] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(0);
   const [changePassword, setChangePassword] = useState(false);
@@ -13,6 +14,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        currUser,
+        setCurrUser,
         changePassword,
         setChangePassword,
         displayAdmin,

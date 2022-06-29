@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useGlobalContext } from "../context";
 
 const RemoveAdmin = () => {
+  const { currUser } = useGlobalContext();
   const [email, setEmail] = useState("");
   const [isErr, setIsErr] = useState("");
   const [errMsg, setErrMsg] = useState("");
@@ -9,6 +11,11 @@ const RemoveAdmin = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     const answer = window.confirm("Are you sure you wish to delete?");
+    if (email === currUser) {
+      setIsErr(1);
+      setErrMsg("You cannot delete the super admin");
+      return;
+    }
     if (answer) {
       try {
         const token = localStorage.getItem("Authorization");
