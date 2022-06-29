@@ -63,7 +63,9 @@ const View = () => {
   return (
     <>
       <div>
-        <h2 className="page-headings">Display Records</h2>
+        <h2 className="page-headings" style={{ fontSize: "1.7rem" }}>
+          Display Records
+        </h2>
         <form className="record-search" onSubmit={getRecords}>
           <input
             type="text"

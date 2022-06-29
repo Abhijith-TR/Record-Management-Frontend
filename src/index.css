@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@800&family=Oswald&display=swap");
-
 :root {
   --radius: 0.25rem;
   --clr-primary-5: hsl(205, 78%, 60%);
@@ -46,6 +45,14 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 } */
+
+.access-denied {
+  display: grid;
+  justify-content: center;
+  place-items: center;
+  height: 80vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 
 .login-container {
   display: grid;

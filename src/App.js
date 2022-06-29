@@ -1,20 +1,24 @@
 import Login from "./Login";
-import Main from "./Main";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useGlobalContext } from "./context";
+import Navbar from "./Navbar";
+import Content from "./Content";
 
 const App = () => {
-  const { loggedIn, isAdmin } = useGlobalContext();
+  const { loggedIn } = useGlobalContext();
 
   if (!loggedIn) {
-    return (
-      <>
-        <Login />
-      </>
-    );
+    return <Login />;
   }
 
-  return <Main isAdmin={isAdmin} />;
+  return (
+    <>
+      <Navbar className="Navbar" />
+      <div className="page">
+        <Content />
+      </div>
+    </>
+  );
 };
 
 export default App;

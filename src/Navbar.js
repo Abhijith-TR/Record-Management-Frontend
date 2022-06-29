@@ -4,24 +4,24 @@ import Button from "react-bootstrap/Button";
 import { useGlobalContext } from "./context";
 
 const NavbarChanged = () => {
-  const { setDisplayView, setDisplayAdmin, setDisplayUpdate, setLoggedIn } =
-    useGlobalContext();
+  const {
+    setDisplayView,
+    setDisplayAdmin,
+    setDisplayUpdate,
+    setLoggedIn,
+    setChangePassword,
+  } = useGlobalContext();
 
   const handleClick = (tabNumber) => {
-    if (tabNumber === 1) {
-      setDisplayView(true);
-      setDisplayAdmin(false);
-      setDisplayUpdate(false);
-    }
-    if (tabNumber === 2) {
-      setDisplayView(false);
-      setDisplayAdmin(false);
-      setDisplayUpdate(true);
-    }
-    if (tabNumber === 3) {
-      setDisplayView(false);
-      setDisplayAdmin(true);
-      setDisplayUpdate(false);
+    const arr = [
+      setDisplayView,
+      setDisplayUpdate,
+      setDisplayAdmin,
+      setChangePassword,
+    ];
+    for (let i = 1; i <= 4; i++) {
+      if (i === tabNumber) arr[i - 1](true);
+      else arr[i - 1](false);
     }
   };
 
@@ -43,6 +43,9 @@ const NavbarChanged = () => {
           </div>
           <div className="navbar-single-link" onClick={() => handleClick(3)}>
             Config
+          </div>
+          <div className="navbar-single-link" onClick={() => handleClick(4)}>
+            Change Password
           </div>
         </div>
         <div style={{ color: "white" }}>

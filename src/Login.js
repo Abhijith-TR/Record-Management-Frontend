@@ -29,7 +29,7 @@ const Login = () => {
       localStorage.setItem("Authorization", "Bearer " + data.token);
       setLoggedIn(true);
       setError(false);
-      setIsAdmin(1);
+      setIsAdmin(data.isAdmin);
     } catch (error) {
       try {
         const { data } = await axios.post(
@@ -41,6 +41,7 @@ const Login = () => {
         );
         localStorage.setItem("Authorization", "Bearer " + data.token);
         setLoggedIn(true);
+        setIsAdmin(data.isAdmin);
         setError(false);
       } catch (error) {
         setErrMsg(error.response.data.msg);
