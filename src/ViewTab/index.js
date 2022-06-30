@@ -25,7 +25,7 @@ const View = () => {
   }, [error]);
 
   const getRecords = async (e) => {
-    const token = localStorage.getItem("Authorization");
+    const token = document.cookie.slice(14);
     e.preventDefault();
     if (!searchValue) {
       setError(true);
@@ -53,6 +53,7 @@ const View = () => {
         setErrMsg(error.response.data.msg);
       }
     } else {
+      setLoading(true);
       try {
         const { data } = await axios.get(
           `https://irms-server.herokuapp.com/api/admin/records/${searchValue}`,

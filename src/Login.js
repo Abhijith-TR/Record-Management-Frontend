@@ -26,7 +26,7 @@ const Login = () => {
           password,
         }
       );
-      localStorage.setItem("Authorization", "Bearer " + data.token);
+      document.cookie = `Authorization=Bearer ${data.token}`;
       setLoggedIn(true);
       setError(false);
       setIsAdmin(data.isAdmin);
@@ -40,7 +40,7 @@ const Login = () => {
             password,
           }
         );
-        localStorage.setItem("Authorization", "Bearer " + data.token);
+        document.cookie = `Authorization=Bearer ${data.token}`;
         setLoggedIn(true);
         setIsAdmin(data.isAdmin);
         setError(false);

@@ -14,7 +14,7 @@ const ClearSubject = () => {
     if (answer) {
       setLoading(true);
       try {
-        const token = localStorage.getItem("Authorization");
+        const token = document.cookie.slice(14);
         const { data } = await axios.delete(
           `https://irms-server.herokuapp.com/api/super/delete/records/${subjectCode}`,
           {

@@ -16,7 +16,7 @@ const AddUser = () => {
     if (answer) {
       setLoading(true);
       try {
-        const token = localStorage.getItem("Authorization");
+        const token = document.cookie.slice(14);
         const { data } = await axios.post(
           "https://irms-server.herokuapp.com/api/admin/register/user",
           { name, entryNumber, degree },

@@ -16,7 +16,7 @@ const Insert = () => {
     const answer = window.confirm("Are the details correct?");
     if (answer) {
       setLoading(true);
-      const token = localStorage.getItem("Authorization");
+      const token = document.cookie.slice(14);
       try {
         console.log(entryNumber, grade, subjectCode, semester);
         const { data } = await axios.post(

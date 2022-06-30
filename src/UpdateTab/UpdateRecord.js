@@ -16,7 +16,7 @@ const UpdateRecord = () => {
     if (answer) {
       setLoading(true);
       try {
-        const token = localStorage.getItem("Authorization");
+        const token = document.cookie.slice(14);
         const { data } = await axios.patch(
           `https://irms-server.herokuapp.com/api/admin/records/${entryNumber}/${subjectCode}`,
           {
