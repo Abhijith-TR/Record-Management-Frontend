@@ -7,6 +7,7 @@ import { useGlobalContext } from "./context";
 const Content = () => {
   const { displayView, displayAdmin, displayUpdate, changePassword } =
     useGlobalContext();
+
   if (displayView) {
     return <View />;
   } else if (displayAdmin) {

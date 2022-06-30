@@ -56,7 +56,7 @@ const RemoveAdmin = () => {
   }, [isErr]);
 
   return (
-    <div style={{ border: "2px solid black", padding: "1.5rem" }}>
+    <div className="center-form">
       <h2 className="section-headings">Remove Admin</h2>
       <form className="record-search" onSubmit={handleUpdate}>
         <input

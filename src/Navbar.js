@@ -5,6 +5,10 @@ import { useGlobalContext } from "./context";
 
 const NavbarChanged = () => {
   const {
+    displayAdmin,
+    displayUpdate,
+    displayView,
+    changePassword,
     setDisplayView,
     setDisplayAdmin,
     setDisplayUpdate,
@@ -40,16 +44,32 @@ const NavbarChanged = () => {
       <Container>
         <div className="irms-name">IRMS</div>
         <div className="navbar-links">
-          <div className="navbar-single-link" onClick={() => handleClick(1)}>
+          <div
+            className="navbar-single-link"
+            onClick={() => handleClick(1)}
+            style={{ color: displayView ? "#ffff80" : "white" }}
+          >
             View Records
           </div>
-          <div className="navbar-single-link" onClick={() => handleClick(2)}>
+          <div
+            className="navbar-single-link"
+            onClick={() => handleClick(2)}
+            style={{ color: displayUpdate ? "#ffff80" : "white" }}
+          >
             Insert / Update
           </div>
-          <div className="navbar-single-link" onClick={() => handleClick(3)}>
+          <div
+            className="navbar-single-link"
+            onClick={() => handleClick(3)}
+            style={{ color: displayAdmin ? "#ffff80" : "white" }}
+          >
             Config
           </div>
-          <div className="navbar-single-link" onClick={() => handleClick(4)}>
+          <div
+            className="navbar-single-link"
+            onClick={() => handleClick(4)}
+            style={{ color: changePassword ? "#ffff80" : "white" }}
+          >
             Change Password
           </div>
         </div>

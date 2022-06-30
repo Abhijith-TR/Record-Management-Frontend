@@ -59,7 +59,7 @@ const Insert = () => {
   }, [isErr]);
 
   return (
-    <div style={{ border: "2px solid black", padding: "0.75rem" }}>
+    <div className="center-form">
       <h2 className="section-headings">Insert Record</h2>
       <form className="record-search" onSubmit={handleUpdate}>
         <input
