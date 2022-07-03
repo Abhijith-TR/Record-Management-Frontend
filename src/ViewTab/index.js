@@ -80,7 +80,7 @@ const View = () => {
 
   return (
     <>
-      <div>
+      <div style={{ marginBottom: "2rem" }}>
         <h2 className="page-headings" style={{ fontSize: "1.7rem" }}>
           Display Records
         </h2>

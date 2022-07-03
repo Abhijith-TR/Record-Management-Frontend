@@ -41,6 +41,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+ul {
+  list-style-position: inside;
+}
+
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -160,21 +164,6 @@ nav {
   /* overflow: hidden; */
 }
 
-.sidebar {
-  display: block;
-  height: 100vh;
-  background-color: #f6f3ff;
-  border-radius: 3%;
-}
-
-.sidebar h1 {
-  color: #e17063;
-  text-align: center;
-  margin-top: 0px;
-  font-size: 1.5rem;
-  padding-top: 0.5rem;
-}
-
 .links {
   font-size: 1rem;
   text-align: center;
@@ -236,18 +225,20 @@ nav {
   text-align: center;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr auto;
 }
 
 .record-card {
-  border: 1px solid black;
+  /* border: 1px solid black; */
+  box-shadow: 0 0 4px;
   height: 2.5rem;
   justify-content: center;
   place-items: center;
   display: grid;
-  grid-template-columns: 1fr 1fr 3fr 0.5fr 0.5fr;
+  grid-template-columns: 1fr 3fr 0.5fr 0.5fr;
   margin-top: 0.5rem;
   background-color: hsl(205, 86%, 95%);
-  border-radius: 10px;
+  /* border-radius: 10px; */
 }
 
 @media screen and (max-width: 1176px) {
@@ -285,6 +276,12 @@ nav {
   place-items: center;
   align-content: center;
   height: 70vh;
+}
+
+@media screen and (max-height: 420px) {
+  .center-form {
+    display: block;
+  }
 }
 
 .section-headings {
@@ -333,4 +330,10 @@ nav {
   to {
     transform: rotate(360deg);
   }
+}
+
+.announcement-list {
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  font-family: Nunito;
 }

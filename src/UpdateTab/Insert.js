@@ -18,7 +18,6 @@ const Insert = () => {
       setLoading(true);
       const token = document.cookie.slice(14);
       try {
-        console.log(entryNumber, grade, subjectCode, semester);
         const { data } = await axios.post(
           "https://irms-server.herokuapp.com/api/admin/records/single",
           {

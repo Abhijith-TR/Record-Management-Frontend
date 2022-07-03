@@ -5,6 +5,7 @@ import { useGlobalContext } from "./context";
 
 const NavbarChanged = () => {
   const {
+    displayAnnouncements,
     displayAdmin,
     displayUpdate,
     displayView,
@@ -14,6 +15,7 @@ const NavbarChanged = () => {
     setDisplayUpdate,
     setLoggedIn,
     setChangePassword,
+    setDisplayAnnouncements,
   } = useGlobalContext();
 
   const handleClick = (tabNumber) => {
@@ -22,8 +24,9 @@ const NavbarChanged = () => {
       setDisplayUpdate,
       setDisplayAdmin,
       setChangePassword,
+      setDisplayAnnouncements,
     ];
-    for (let i = 1; i <= 4; i++) {
+    for (let i = 1; i <= 5; i++) {
       if (i === tabNumber) arr[i - 1](true);
       else arr[i - 1](false);
     }
@@ -71,6 +74,13 @@ const NavbarChanged = () => {
             style={{ color: changePassword ? "#ffff80" : "white" }}
           >
             Change Password
+          </div>
+          <div
+            className="navbar-single-link"
+            onClick={() => handleClick(5)}
+            style={{ color: displayAnnouncements ? "#ffff80" : "white" }}
+          >
+            Announcements
           </div>
         </div>
         <div style={{ color: "white" }}>
