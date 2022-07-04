@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ImSpinner6 } from "react-icons/im";
 
-const Admin = () => {
+const Insert = () => {
   const [isErr, setIsErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
@@ -95,4 +95,4 @@ const Admin = () => {
   );
 };
 
-export default Admin;
+export default Insert;

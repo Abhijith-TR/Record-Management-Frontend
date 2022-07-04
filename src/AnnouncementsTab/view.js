@@ -2,17 +2,19 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { ImSpinner6 } from "react-icons/im";
 import { useGlobalContext } from "../context";
+import { MdDelete } from "react-icons/md";
 
-const Student = () => {
+const View = () => {
   const { isAdmin } = useGlobalContext();
   const [isErr, setIsErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
+  const [onDisplay, setOnDisplay] = useState("");
   const [loading, setLoading] = useState(false);
   const [announcements, setAnnouncements] = useState([]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     setLoading(true);
     if (subjectCode.length < 5) {
       setLoading(false);
@@ -31,17 +33,50 @@ const Student = () => {
           },
         }
       );
-      console.log(data.notifications);
+      setOnDisplay(subjectCode);
       setAnnouncements(data.notifications);
       setLoading(false);
       setIsErr(2);
       setErrMsg(data.msg);
     } catch (error) {
+      setAnnouncements([]);
       setLoading(false);
       setIsErr(1);
       setErrMsg(error.response.data.msg);
     }
     setSubjectCode("");
+  };
+
+  const removeAnnouncement = async (_id) => {
+    setLoading(true);
+    try {
+      const token = document.cookie.slice(14);
+      const { data } = await axios.delete(
+        `https://irms-server.herokuapp.com/api/admin/notif/${onDisplay}/${_id}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      setLoading(false);
+      setIsErr(2);
+      console.log(data);
+      setErrMsg(data.msg);
+      const { data: info } = await axios.get(
+        `https://irms-server.herokuapp.com/api/admin/notif/${onDisplay}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      setAnnouncements(info.notifications);
+    } catch (error) {
+      setLoading(false);
+      setIsErr(1);
+      setErrMsg(error.response.data.msg);
+    }
   };
 
   useEffect(() => {
@@ -85,8 +120,35 @@ const Student = () => {
       >
         {isErr ? errMsg : ""}
       </div>
+      <div className="announcements">
+        {announcements.map((item, index) => {
+          const { _id, announcement } = item;
+          return (
+            <h5
+              style={{
+                gridColumn: "2",
+                background: "hsl(205, 86%, 95%)",
+                boxShadow: "0 0 3px",
+              }}
+              key={_id}
+            >
+              {index + 1}. {announcement}{" "}
+              {isAdmin ? (
+                <button
+                  style={{ background: "hsl(205, 86%, 95%)", border: "none" }}
+                  onClick={() => removeAnnouncement(_id)}
+                >
+                  <MdDelete color="red" />
+                </button>
+              ) : (
+                <></>
+              )}
+            </h5>
+          );
+        })}
+      </div>
     </div>
   );
 };
 
-export default Student;
+export default View;

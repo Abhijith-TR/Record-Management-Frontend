@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Student from "./student";
-import Admin from "./admin";
+import View from "./view";
+import Insert from "./insert";
 
 const Announcements = () => {
   const [tabs, setTabs] = useState([1, 0]);
@@ -10,22 +10,22 @@ const Announcements = () => {
       <div className="tab-navbar">
         <div
           className="navbar-single-link"
-          onClick={() => setTabs([1, 0, 0, 0])}
+          onClick={() => setTabs([1, 0])}
           style={{ color: tabs[0] ? "yellow" : "white" }}
         >
-          View Announcements
+          View
         </div>
         <div
           className="navbar-single-link"
-          onClick={() => setTabs([0, 1, 0, 0])}
+          onClick={() => setTabs([0, 1])}
           style={{ color: tabs[1] ? "yellow" : "white" }}
         >
-          Insert Announcements
+          Insert
         </div>
       </div>
       <div className="update">
-        {tabs[0] ? <Student /> : <></>}
-        {tabs[1] ? <Admin /> : <></>}
+        {tabs[0] ? <View /> : <></>}
+        {tabs[1] ? <Insert /> : <></>}
       </div>
     </>
   );

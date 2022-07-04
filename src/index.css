@@ -207,15 +207,6 @@ nav {
   height: 3rem;
 }
 
-@media screen and (max-width: 500px) {
-  .tab-navbar {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-    height: fit-content;
-  }
-}
-
 .navbar-single-link {
   color: white;
   font-weight: 500;
@@ -230,6 +221,7 @@ nav {
 
 .record-card {
   /* border: 1px solid black; */
+  font-weight: 800;
   box-shadow: 0 0 4px;
   height: 2.5rem;
   justify-content: center;
@@ -291,6 +283,15 @@ nav {
   font-size: 1.5rem;
 }
 
+.announcements {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+  margin-top: 1.5rem;
+  text-align: center;
+  font-weight: 400;
+  font-family: Nunito;
+}
+
 @media screen and (max-width: 800px) {
   .navbar-links {
     display: block;
@@ -332,8 +333,14 @@ nav {
   }
 }
 
-.announcement-list {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  font-family: Nunito;
+@media screen and (max-width: 500px) {
+  .tab-navbar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+    height: fit-content;
+  }
+  .announcements {
+    display: block;
+  }
 }
