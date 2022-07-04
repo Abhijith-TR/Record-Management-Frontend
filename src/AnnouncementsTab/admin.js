@@ -7,13 +7,58 @@ const Admin = () => {
   const [errMsg, setErrMsg] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
   const [loading, setLoading] = useState(false);
+  const [announcement, setAnnouncement] = useState("");
 
-  const handleUpdate = () => {};
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    if (subjectCode.length < 5 || announcement.length === 0) {
+      setLoading(false);
+      setIsErr(1);
+      setErrMsg("Please provide valid input");
+      return;
+    }
+    try {
+      const token = document.cookie.slice(14);
+      const { data } = await axios.post(
+        "https://irms-server.herokuapp.com/api/admin/notif",
+        {
+          subjectCode,
+          announcement,
+        },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      setLoading(false);
+      setIsErr(2);
+      setErrMsg(data.msg);
+    } catch (error) {
+      setLoading(false);
+      setIsErr(1);
+      setErrMsg(error.response.data.msg);
+    }
+    setAnnouncement("");
+    setSubjectCode("");
+  };
+
+  useEffect(() => {
+    if (isErr) {
+      const timeout = setTimeout(() => {
+        setIsErr(0);
+      }, 5000);
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [isErr]);
 
   return (
-    <div className="center-form">
-      <h2 className="section-headings">Remove Subject Records</h2>
-      <form className="record-search" onSubmit={handleUpdate}>
+    <div style={{ marginTop: "1rem" }}>
+      <h2 className="section-headings">Insert Announcement</h2>
+      <form className="record-search" onSubmit={handleSubmit}>
         <input
           type="text"
           className="login-input login-input-alt"
@@ -22,13 +67,19 @@ const Admin = () => {
           onChange={(e) => setSubjectCode(e.target.value)}
           style={{ marginTop: "0.5rem" }}
         />
-
+        <textarea
+          className="login-input login-input-alt"
+          placeholder="Announcement"
+          value={announcement}
+          onChange={(e) => setAnnouncement(e.target.value)}
+          style={{ marginTop: "0.5rem" }}
+        />
         <button
           type="submit"
           className="submit-btn submit-btn-alt"
           style={{ marginTop: "0.5rem" }}
         >
-          Delete
+          Insert
         </button>
       </form>
       <div className="error" style={{ color: "black" }}>
