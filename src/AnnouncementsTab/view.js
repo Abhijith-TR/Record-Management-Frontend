@@ -129,10 +129,13 @@ const View = () => {
                 gridColumn: "2",
                 background: "hsl(205, 86%, 95%)",
                 boxShadow: "0 0 3px",
+                display: isAdmin ? "flex" : "block",
               }}
               key={_id}
             >
-              {index + 1}. {announcement}{" "}
+              <div style={{ flexGrow: "1" }}>
+                {index + 1}. {announcement}{" "}
+              </div>
               {isAdmin ? (
                 <button
                   style={{ background: "hsl(205, 86%, 95%)", border: "none" }}
