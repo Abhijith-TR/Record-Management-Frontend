@@ -1,8 +1,10 @@
 import { useState } from "react";
 import View from "./view";
 import Insert from "./insert";
+import { useGlobalContext } from "../context";
 
 const Announcements = () => {
+  const { isAdmin } = useGlobalContext();
   const [tabs, setTabs] = useState([1, 0]);
 
   return (
@@ -13,7 +15,7 @@ const Announcements = () => {
           onClick={() => setTabs([1, 0])}
           style={{ color: tabs[0] ? "yellow" : "white" }}
         >
-          View
+          {isAdmin ? "View / Remove" : "View"}
         </div>
         <div
           className="navbar-single-link"

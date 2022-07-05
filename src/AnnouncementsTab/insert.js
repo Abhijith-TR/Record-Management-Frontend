@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { ImSpinner6 } from "react-icons/im";
+import { useGlobalContext } from "../context";
 
 const Insert = () => {
+  const { isAdmin } = useGlobalContext();
   const [isErr, setIsErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const [subjectCode, setSubjectCode] = useState("");
@@ -54,6 +56,16 @@ const Insert = () => {
       };
     }
   }, [isErr]);
+
+  if (isAdmin === 0) {
+    return (
+      <div className="access-denied">
+        <h1 style={{ textAlign: "center" }}>
+          Unauthorized to access this page
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <div style={{ marginTop: "1rem" }}>

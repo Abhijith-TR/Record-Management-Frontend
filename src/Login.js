@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { useGlobalContext } from "./context";
+import { ImSpinner6 } from "react-icons/im";
 
 const Login = () => {
   const { setLoggedIn, setIsAdmin, setCurrUser } = useGlobalContext();
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -18,6 +20,7 @@ const Login = () => {
       setPassword("");
       return;
     }
+    setLoading(true);
     try {
       const { data } = await axios.post(
         "https://irms-server.herokuapp.com/api/authorize/admin",
@@ -27,6 +30,7 @@ const Login = () => {
         }
       );
       document.cookie = `Authorization=Bearer ${data.token}`;
+      setLoading(false);
       setLoggedIn(true);
       setError(false);
       setIsAdmin(data.isAdmin);
@@ -40,11 +44,13 @@ const Login = () => {
             password,
           }
         );
+        setLoading(false);
         document.cookie = `Authorization=Bearer ${data.token}`;
         setLoggedIn(true);
         setIsAdmin(data.isAdmin);
         setError(false);
       } catch (error) {
+        setLoading(false);
         setErrMsg(error.response.data.msg);
         setError(true);
       }
@@ -90,6 +96,9 @@ const Login = () => {
             marginRight: "4rem",
           }}
         >
+          <div className="error" style={{ color: "white" }}>
+            {loading ? <ImSpinner6 className="spinner" size={30} /> : <></>}
+          </div>
           {error ? (
             <h5 className="error" style={{ color: "white" }}>
               {errMsg}
