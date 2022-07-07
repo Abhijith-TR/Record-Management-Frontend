@@ -14,7 +14,6 @@
 
 ## Known issues
 
-- The arrow in the records display panel does not have announcement functionality. This will be added soon.
 - Password recovery is not possible. The database will store encrypted passwords (if you use the record management API) and not even the admin can know your passwords. The only way to recover is to delete the account and reset it.
 
 ## Additional Information
