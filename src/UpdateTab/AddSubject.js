@@ -17,7 +17,7 @@ const AddSubject = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.post(
-          "https://irms-server.herokuapp.com/api/admin/records",
+          "https://localhost:3000/api/admin/records",
           {
             subjectName,
             subjectCode,

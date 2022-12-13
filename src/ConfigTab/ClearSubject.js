@@ -16,7 +16,7 @@ const ClearSubject = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.delete(
-          `https://irms-server.herokuapp.com/api/super/delete/records/${subjectCode}`,
+          `https://localhost:3000/api/super/delete/records/${subjectCode}`,
           {
             headers: {
               Authorization: token,

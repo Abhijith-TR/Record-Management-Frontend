@@ -34,7 +34,7 @@ const ChangePassword = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.patch(
-        `https://irms-server.herokuapp.com/api/${route}/change`,
+        `https://localhost:3000/api/${route}/change`,
         { newPassword, password: oldPassword },
         {
           headers: {

@@ -23,7 +23,7 @@ const RemoveAdmin = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.delete(
-          `https://irms-server.herokuapp.com/api/super/delete/admin/${email}`,
+          `https://localhost:3000/api/super/delete/admin/${email}`,
           {
             headers: {
               Authorization: token,

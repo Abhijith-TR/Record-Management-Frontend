@@ -33,8 +33,8 @@ const View = () => {
     } else if (!subjectCode) {
       setLoading(true);
       const url = isAdmin
-        ? `https://irms-server.herokuapp.com/api/admin/records/get/${searchValue}`
-        : `https://irms-server.herokuapp.com/api/user/records/${searchValue}`;
+        ? `https://localhost:3000/api/admin/records/get/${searchValue}`
+        : `https://localhost:3000/api/user/records/${searchValue}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -56,7 +56,7 @@ const View = () => {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          `https://irms-server.herokuapp.com/api/admin/records/${searchValue}`,
+          `https://localhost:3000/api/admin/records/${searchValue}`,
           {
             headers: {
               Authorization: token,

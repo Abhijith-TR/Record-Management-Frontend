@@ -17,7 +17,7 @@ const AddAdmin = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.post(
-          "https://irms-server.herokuapp.com/api/super/register/admin",
+          "https://localhost:3000/api/super/register/admin",
           { name, email },
           {
             headers: {

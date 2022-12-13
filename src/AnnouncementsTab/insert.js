@@ -23,7 +23,7 @@ const Insert = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.post(
-        "https://irms-server.herokuapp.com/api/admin/notif",
+        "https://localhost:3000/api/admin/notif",
         {
           subjectCode,
           announcement,
