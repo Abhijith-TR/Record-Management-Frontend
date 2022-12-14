@@ -16,7 +16,7 @@ const RemoveUser = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.delete(
-          `https://localhost:3000/api/super/delete/user/${entryNumber}`,
+          `http://localhost:5000/api/super/delete/user/${entryNumber}`,
           {
             headers: {
               Authorization: token,

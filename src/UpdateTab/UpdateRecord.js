@@ -18,7 +18,7 @@ const UpdateRecord = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.patch(
-          `https://localhost:3000/api/admin/records/${entryNumber}/${subjectCode}`,
+          `http://localhost:5000/api/admin/records/${entryNumber}/${subjectCode}`,
           {
             grade,
           },

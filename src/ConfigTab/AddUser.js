@@ -18,7 +18,7 @@ const AddUser = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.post(
-          "https://localhost:3000/api/admin/register/user",
+          "http://localhost:5000/api/admin/register/user",
           { name, entryNumber, degree },
           {
             headers: {

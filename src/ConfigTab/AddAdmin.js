@@ -17,7 +17,7 @@ const AddAdmin = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.post(
-          "https://localhost:3000/api/super/register/admin",
+          "http://localhost:5000/api/super/register/admin",
           { name, email },
           {
             headers: {

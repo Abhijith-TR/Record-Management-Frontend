@@ -3,7 +3,6 @@
 - Web application to facilitate the viewing and management of academic records.
 - Involves three levels of users i.e., the super admin, the admin and the user.
 - Provides a GUI to use the record management API documented [here](https://github.com/Abhijith-TR/Record-Management-Backend).
-- Note that the online app cannot be used unless you have been registered by the admin (in this case, me).
 
 ## How to setup on local machine
 

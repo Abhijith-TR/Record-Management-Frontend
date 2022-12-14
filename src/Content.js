@@ -6,23 +6,17 @@ import { useGlobalContext } from "./context";
 import Announcements from "./AnnouncementsTab";
 
 const Content = () => {
-  const {
-    displayView,
-    displayAdmin,
-    displayUpdate,
-    changePassword,
-    displayAnnouncements,
-  } = useGlobalContext();
+  const { tabs } = useGlobalContext();
 
-  if (displayView) {
+  if (tabs[0]) {
     return <View />;
-  } else if (displayAdmin) {
+  } else if (tabs[2]) {
     return <Admin />;
-  } else if (displayUpdate) {
+  } else if (tabs[1]) {
     return <UpdateTab />;
-  } else if (changePassword) {
+  } else if (tabs[3]) {
     return <ChangePassword />;
-  } else if (displayAnnouncements) {
+  } else if (tabs[4]) {
     return <Announcements />;
   }
 };

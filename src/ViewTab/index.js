@@ -6,8 +6,7 @@ import { ImSpinner6 } from "react-icons/im";
 
 const View = () => {
   const [loading, setLoading] = useState(false);
-  const { isAdmin } = useGlobalContext();
-  const [records, setRecords] = useState([]);
+  const { isAdmin, records, setRecords } = useGlobalContext();
   const [subjectCode, setSubjectCode] = useState(false);
   const [searchValue, setSearchValue] = useState("");
   const [error, setError] = useState(false);
@@ -17,7 +16,7 @@ const View = () => {
     if (error) {
       const timeout = setTimeout(() => {
         setError(false);
-      }, 3000);
+      }, 5000);
       return () => {
         clearTimeout(timeout);
       };
@@ -33,8 +32,8 @@ const View = () => {
     } else if (!subjectCode) {
       setLoading(true);
       const url = isAdmin
-        ? `https://localhost:3000/api/admin/records/get/${searchValue}`
-        : `https://localhost:3000/api/user/records/${searchValue}`;
+        ? `http://localhost:5000/api/admin/records/get/${searchValue}`
+        : `http://localhost:5000/api/user/records/${searchValue}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -56,7 +55,7 @@ const View = () => {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          `https://localhost:3000/api/admin/records/${searchValue}`,
+          `http://localhost:5000/api/admin/records/${searchValue}`,
           {
             headers: {
               Authorization: token,

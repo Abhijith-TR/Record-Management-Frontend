@@ -19,7 +19,7 @@ const Insert = () => {
       const token = document.cookie.slice(14);
       try {
         const { data } = await axios.post(
-          "https://localhost:3000/api/admin/records/single",
+          "http://localhost:5000/api/admin/records/single",
           {
             entryNumber,
             grade,

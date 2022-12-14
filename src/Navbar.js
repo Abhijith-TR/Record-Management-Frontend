@@ -4,32 +4,14 @@ import Button from "react-bootstrap/Button";
 import { useGlobalContext } from "./context";
 
 const NavbarChanged = () => {
-  const {
-    displayAnnouncements,
-    displayAdmin,
-    displayUpdate,
-    displayView,
-    changePassword,
-    setDisplayView,
-    setDisplayAdmin,
-    setDisplayUpdate,
-    setLoggedIn,
-    setChangePassword,
-    setDisplayAnnouncements,
-  } = useGlobalContext();
+  const { tabs, setTabs, setLoggedIn } = useGlobalContext();
 
   const handleClick = (tabNumber) => {
-    const arr = [
-      setDisplayView,
-      setDisplayUpdate,
-      setDisplayAdmin,
-      setChangePassword,
-      setDisplayAnnouncements,
-    ];
+    let arr = [0, 0, 0, 0, 0];
     for (let i = 1; i <= 5; i++) {
-      if (i === tabNumber) arr[i - 1](true);
-      else arr[i - 1](false);
+      if (i === tabNumber) arr[i - 1] = 1;
     }
+    setTabs(arr);
   };
 
   const handleLogout = () => {
@@ -50,35 +32,35 @@ const NavbarChanged = () => {
           <div
             className="navbar-single-link"
             onClick={() => handleClick(1)}
-            style={{ color: displayView ? "#ffff80" : "white" }}
+            style={{ color: tabs[0] ? "#ffff80" : "white" }}
           >
             View Records
           </div>
           <div
             className="navbar-single-link"
             onClick={() => handleClick(2)}
-            style={{ color: displayUpdate ? "#ffff80" : "white" }}
+            style={{ color: tabs[1] ? "#ffff80" : "white" }}
           >
             Insert / Update
           </div>
           <div
             className="navbar-single-link"
             onClick={() => handleClick(3)}
-            style={{ color: displayAdmin ? "#ffff80" : "white" }}
+            style={{ color: tabs[2] ? "#ffff80" : "white" }}
           >
             Config
           </div>
           <div
             className="navbar-single-link"
             onClick={() => handleClick(4)}
-            style={{ color: changePassword ? "#ffff80" : "white" }}
+            style={{ color: tabs[3] ? "#ffff80" : "white" }}
           >
             Change Password
           </div>
           <div
             className="navbar-single-link"
             onClick={() => handleClick(5)}
-            style={{ color: displayAnnouncements ? "#ffff80" : "white" }}
+            style={{ color: tabs[4] ? "#ffff80" : "white" }}
           >
             Announcements
           </div>

@@ -3,34 +3,25 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [displayAnnouncements, setDisplayAnnouncements] = useState(false);
+  const [tabs, setTabs] = useState([1, 0, 0, 0, 0]);
   const [currUser, setCurrUser] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(0);
-  const [changePassword, setChangePassword] = useState(false);
-  const [displayView, setDisplayView] = useState(true);
-  const [displayAdmin, setDisplayAdmin] = useState(false);
-  const [displayUpdate, setDisplayUpdate] = useState(false);
+  const [records, setRecords] = useState([]);
 
   return (
     <AppContext.Provider
       value={{
-        displayAnnouncements,
-        setDisplayAnnouncements,
+        tabs,
+        setTabs,
         currUser,
         setCurrUser,
-        changePassword,
-        setChangePassword,
-        displayAdmin,
-        displayUpdate,
-        displayView,
-        setDisplayView,
-        setDisplayAdmin,
-        setDisplayUpdate,
         loggedIn,
         setLoggedIn,
         isAdmin,
         setIsAdmin,
+        records,
+        setRecords,
       }}
     >
       {children}

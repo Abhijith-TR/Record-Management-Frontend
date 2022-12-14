@@ -23,7 +23,7 @@ const Login = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        "https://localhost:3000/api/authorize/admin",
+        "http://localhost:5000/api/authorize/admin",
         {
           email,
           password,
@@ -38,7 +38,7 @@ const Login = () => {
     } catch (error) {
       try {
         const { data } = await axios.post(
-          "https://localhost:3000/api/authorize/user",
+          "http://localhost:5000/api/authorize/user",
           {
             email,
             password,

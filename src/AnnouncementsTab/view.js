@@ -26,7 +26,7 @@ const View = () => {
       const token = document.cookie.slice(14);
       const route = isAdmin ? "admin" : "user";
       const { data } = await axios.get(
-        `https://localhost:3000/api/${route}/notif/${subjectCode}`,
+        `http://localhost:5000/api/${route}/notif/${subjectCode}`,
         {
           headers: {
             Authorization: token,
@@ -52,7 +52,7 @@ const View = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.delete(
-        `https://localhost:3000/api/admin/notif/${onDisplay}/${_id}`,
+        `http://localhost:5000/api/admin/notif/${onDisplay}/${_id}`,
         {
           headers: {
             Authorization: token,
@@ -64,7 +64,7 @@ const View = () => {
       console.log(data);
       setErrMsg(data.msg);
       const { data: info } = await axios.get(
-        `https://localhost:3000/api/admin/notif/${onDisplay}`,
+        `http://localhost:5000/api/admin/notif/${onDisplay}`,
         {
           headers: {
             Authorization: token,

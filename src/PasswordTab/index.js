@@ -34,7 +34,7 @@ const ChangePassword = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.patch(
-        `https://localhost:3000/api/${route}/change`,
+        `http://localhost:5000/api/${route}/change`,
         { newPassword, password: oldPassword },
         {
           headers: {

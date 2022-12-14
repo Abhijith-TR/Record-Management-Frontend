@@ -13,7 +13,7 @@ const email = "";
 const name = "";
 const password = "";
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const setup = async () => {
   try {
