@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ImSpinner6 } from "react-icons/im";
 import { useGlobalContext } from "../context";
 
-const Insert = () => {
+const InsertAnnouncement = () => {
   const { isAdmin } = useGlobalContext();
   const [isErr, setIsErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -107,4 +107,4 @@ const Insert = () => {
   );
 };
 
-export default Insert;
+export default InsertAnnouncement;

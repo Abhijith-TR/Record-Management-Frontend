@@ -344,3 +344,31 @@ nav {
     display: block;
   }
 }
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover {
+  text-transform: none;
+  color: white;
+}
+
+.link:focus {
+  color: #ffff80;
+}
+
+.sub-link {
+  color: white;
+  text-decoration: none;
+}
+
+.sub-link:hover {
+  text-transform: none;
+  color: white;
+}
+
+.sub-link:focus {
+  color: yellow;
+}

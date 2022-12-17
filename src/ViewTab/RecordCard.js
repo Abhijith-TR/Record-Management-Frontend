@@ -1,8 +1,4 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaAngleDown, FaAngleUp } from "react-icons/fa";
-import { useGlobalContext } from "../context";
-import { ImSpinner6 } from "react-icons/im";
 
 const RecordCard = (props) => {
   const [color, setColor] = useState("");

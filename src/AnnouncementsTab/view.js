@@ -4,7 +4,7 @@ import { ImSpinner6 } from "react-icons/im";
 import { useGlobalContext } from "../context";
 import { MdDelete } from "react-icons/md";
 
-const View = () => {
+const ViewAnnouncement = () => {
   const { isAdmin } = useGlobalContext();
   const [isErr, setIsErr] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -154,4 +154,4 @@ const View = () => {
   );
 };
 
-export default View;
+export default ViewAnnouncement;

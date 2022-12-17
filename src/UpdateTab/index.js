@@ -1,9 +1,9 @@
-import Insert from "./Insert";
 import AddSubject from "./AddSubject";
 import UpdateRecord from "./UpdateRecord";
 import DeleteRecord from "./DeleteRecord";
 import { useGlobalContext } from "../context";
 import { useState } from "react";
+import InsertRecord from "./Insert";
 
 const UpdateTab = () => {
   const { isAdmin } = useGlobalContext();
@@ -51,7 +51,7 @@ const UpdateTab = () => {
         </div>
       </div>
       <div className="update">
-        {tabs[0] ? <Insert /> : <></>}
+        {tabs[0] ? <InsertRecord /> : <></>}
         {tabs[1] ? <UpdateRecord /> : <></>}
         {tabs[2] ? <AddSubject /> : <></>}
         {tabs[3] ? <DeleteRecord /> : <></>}
