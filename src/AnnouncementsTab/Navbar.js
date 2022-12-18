@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "../context";
 
 const Navbar = () => {
@@ -7,14 +7,24 @@ const Navbar = () => {
   return (
     <div className="tab-navbar">
       <div className="navbar-single-link">
-        <Link to="/announcements" className="sub-link">
+        <NavLink
+          to="/announcements/view"
+          className={({ isActive }) =>
+            isActive ? "active-sub-link" : "inactive-link"
+          }
+        >
           {isAdmin ? "View / Remove" : "View"}
-        </Link>
+        </NavLink>
       </div>
       <div className="navbar-single-link">
-        <Link to="/announcements/insert" className="sub-link">
+        <NavLink
+          to="/announcements/insert"
+          className={({ isActive }) =>
+            isActive ? "active-sub-link" : "inactive-link"
+          }
+        >
           Insert
-        </Link>
+        </NavLink>
       </div>
     </div>
   );

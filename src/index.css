@@ -345,30 +345,20 @@ nav {
   }
 }
 
-.link {
+.inactive-link,
+.inactive-link:hover {
   color: white;
   text-decoration: none;
 }
 
-.link:hover {
-  text-transform: none;
-  color: white;
-}
-
-.link:focus {
+.active-main-link,
+.active-main-link:hover {
   color: #ffff80;
-}
-
-.sub-link {
-  color: white;
   text-decoration: none;
 }
 
-.sub-link:hover {
-  text-transform: none;
-  color: white;
-}
-
-.sub-link:focus {
+.active-sub-link,
+.active-sub-link:hover {
   color: yellow;
+  text-decoration: none;
 }

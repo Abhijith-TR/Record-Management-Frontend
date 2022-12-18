@@ -1,7 +1,7 @@
 import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "./context";
 
 const NavbarChanged = () => {
@@ -23,29 +23,54 @@ const NavbarChanged = () => {
         <div className="irms-name">IRMS</div>
         <div className="navbar-links">
           <div className="navbar-single-link">
-            <Link to="/" className="link">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "active-main-link" : "inactive-link"
+              }
+            >
               View Records
-            </Link>
+            </NavLink>
           </div>
           <div className="navbar-single-link">
-            <Link to="/update" className="link">
+            <NavLink
+              to="/update/insertrecord"
+              className={({ isActive }) =>
+                isActive ? "active-main-link" : "inactive-link"
+              }
+            >
               Insert / Update
-            </Link>
+            </NavLink>
           </div>
           <div className="navbar-single-link">
-            <Link to="/admin" className="link">
+            <NavLink
+              to="/admin/addadmin"
+              className={({ isActive }) =>
+                isActive ? "active-main-link" : "inactive-link"
+              }
+            >
               Config
-            </Link>
+            </NavLink>
           </div>
           <div className="navbar-single-link">
-            <Link to="/change" className="link">
+            <NavLink
+              to="/change"
+              className={({ isActive }) =>
+                isActive ? "active-main-link" : "inactive-link"
+              }
+            >
               Change Password
-            </Link>
+            </NavLink>
           </div>
           <div className="navbar-single-link">
-            <Link to="/announcements" className="link">
+            <NavLink
+              to="/announcements/view"
+              className={({ isActive }) =>
+                isActive ? "active-main-link" : "inactive-link"
+              }
+            >
               Announcements
-            </Link>
+            </NavLink>
           </div>
         </div>
         <div style={{ color: "white" }}>

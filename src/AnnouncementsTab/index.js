@@ -8,7 +8,7 @@ const Announcements = () => {
     <>
       <Navbar></Navbar>
       <Routes>
-        <Route path="/" element={<ViewAnnouncement />} />
+        <Route path="/view" element={<ViewAnnouncement />} />
         <Route path="/insert" element={<InsertAnnouncement />} />
       </Routes>
     </>

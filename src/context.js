@@ -3,7 +3,6 @@ import React, { useContext, useState } from "react";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [tabs, setTabs] = useState([1, 0, 0, 0, 0]);
   const [currUser, setCurrUser] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(0);
@@ -12,8 +11,6 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        tabs,
-        setTabs,
         currUser,
         setCurrUser,
         loggedIn,
