@@ -4,7 +4,7 @@ import DeleteRecord from "./DeleteRecord";
 import { useGlobalContext } from "../context";
 import InsertRecord from "./Insert";
 import Navbar from "./Navbar";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 const UpdateTab = () => {
   const { isAdmin } = useGlobalContext();
@@ -26,6 +26,10 @@ const UpdateTab = () => {
         <Route path="/updategrade" element={<UpdateRecord />} />
         <Route path="/addsubject" element={<AddSubject />} />
         <Route path="/deleterecord" element={<DeleteRecord />} />
+        <Route
+          path="*"
+          element={<Navigate to="/update/insertrecord" replace />}
+        />
       </Routes>
     </>
   );

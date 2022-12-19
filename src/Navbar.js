@@ -34,7 +34,7 @@ const NavbarChanged = () => {
           </div>
           <div className="navbar-single-link">
             <NavLink
-              to="/update/insertrecord"
+              to="/update"
               className={({ isActive }) =>
                 isActive ? "active-main-link" : "inactive-link"
               }
@@ -44,7 +44,7 @@ const NavbarChanged = () => {
           </div>
           <div className="navbar-single-link">
             <NavLink
-              to="/admin/addadmin"
+              to="/admin"
               className={({ isActive }) =>
                 isActive ? "active-main-link" : "inactive-link"
               }
@@ -64,7 +64,7 @@ const NavbarChanged = () => {
           </div>
           <div className="navbar-single-link">
             <NavLink
-              to="/announcements/view"
+              to="/announcements"
               className={({ isActive }) =>
                 isActive ? "active-main-link" : "inactive-link"
               }

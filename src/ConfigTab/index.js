@@ -4,7 +4,7 @@ import RemoveAdmin from "./RemoveAdmin";
 import RemoveUser from "./RemoveUser";
 import ClearSubject from "./ClearSubject";
 import { useGlobalContext } from "../context";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "./Navbar";
 
 const Admin = () => {
@@ -30,6 +30,7 @@ const Admin = () => {
           <Route path="/removeadmin" element={<RemoveAdmin />} />
           <Route path="/removeuser" element={<RemoveUser />} />
           <Route path="/clearsubject" element={<ClearSubject />} />
+          <Route path="*" element={<Navigate to="/admin/addadmin" replace />} />
         </Routes>
       </div>
     </>

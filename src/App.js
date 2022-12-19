@@ -2,6 +2,7 @@ import Login from "./Login";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useGlobalContext } from "./context";
 import Navbar from "./Navbar";
+import Error from "./Error";
 import View from "./ViewTab";
 import Admin from "./ConfigTab";
 import UpdateTab from "./UpdateTab";
@@ -26,6 +27,7 @@ const App = () => {
           <Route path="/update/*" element={<UpdateTab />} />
           <Route path="/announcements/*" element={<Announcements />}></Route>
           <Route path="/change" element={<ChangePassword />} />
+          <Route path="*" element={<Error />} />
         </Routes>
       </div>
     </>

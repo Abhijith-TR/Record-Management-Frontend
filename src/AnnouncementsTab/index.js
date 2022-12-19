@@ -1,7 +1,7 @@
 import ViewAnnouncement from "./view";
 import InsertAnnouncement from "./insert";
 import Navbar from "./Navbar";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 const Announcements = () => {
   return (
@@ -10,6 +10,10 @@ const Announcements = () => {
       <Routes>
         <Route path="/view" element={<ViewAnnouncement />} />
         <Route path="/insert" element={<InsertAnnouncement />} />
+        <Route
+          path="*"
+          element={<Navigate to="/announcements/view" replace />}
+        />
       </Routes>
     </>
   );
