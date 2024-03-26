@@ -5,10 +5,13 @@ import { NavLink } from "react-router-dom";
 import { useGlobalContext } from "./context";
 
 const NavbarChanged = () => {
-  const { setLoggedIn } = useGlobalContext();
+  const { setLoggedIn, setRecords, setIsAdmin, setCurrUser } = useGlobalContext();
 
   const handleLogout = () => {
     setLoggedIn(false);
+    setRecords(() => []);
+    setIsAdmin(() => false);
+    setCurrUser(() => "");
     localStorage.removeItem("Authorization");
   };
 

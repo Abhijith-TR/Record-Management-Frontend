@@ -71,6 +71,7 @@ const ViewAnnouncement = () => {
           },
         }
       );
+      console.log(info);
       setAnnouncements(info.notifications);
     } catch (error) {
       setLoading(false);
