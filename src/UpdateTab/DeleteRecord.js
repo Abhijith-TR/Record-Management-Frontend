@@ -17,7 +17,7 @@ const DeleteRecord = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.delete(
-          `http://localhost:5000/api/admin/records/${entryNumber}/${subjectCode}`,
+          `https://irms.onrender.com/api/admin/records/${entryNumber}/${subjectCode}`,
           {
             headers: {
               Authorization: token,

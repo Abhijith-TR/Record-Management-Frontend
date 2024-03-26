@@ -34,7 +34,7 @@ const ChangePassword = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.patch(
-        `http://localhost:5000/api/${route}/change`,
+        `https://irms.onrender.com/api/${route}/change`,
         { newPassword, password: oldPassword },
         {
           headers: {

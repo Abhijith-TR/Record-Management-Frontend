@@ -17,7 +17,7 @@ const AddAdmin = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.post(
-          "http://localhost:5000/api/super/register/admin",
+          "https://irms.onrender.com/api/super/register/admin",
           { name, email },
           {
             headers: {

@@ -3,7 +3,7 @@
 - API to facilitate the management and viewing of academic records.
 - Involves three levels of users i.e., the super admin, the admin and the user.
 - Includes all CRUD functionality as well as access restrictions to records.
-- Developed using NodeJS and Express. Database on MongoDB Atlas. Hosted on [Heroku](https://localhost:3000/).
+- Developed using NodeJS and Express. Database on MongoDB Atlas. Hosted on [Render](https://irms.onrender.com/).
 - Note that the online API cannot be used unless you are registered by the super admin (in this case, me).
 
 ## How to setup
@@ -29,7 +29,7 @@
 
 ## API Methods
 
-- Detailed documentation can be found [here](https://localhost:3000/docs/)
+- Detailed documentation can be found [here](https://irms.onrender.com/)
 
 ## API Details
 

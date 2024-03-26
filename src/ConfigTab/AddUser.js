@@ -18,7 +18,7 @@ const AddUser = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.post(
-          "http://localhost:5000/api/admin/register/user",
+          "https://irms.onrender.com/api/admin/register/user",
           { name, entryNumber, degree },
           {
             headers: {

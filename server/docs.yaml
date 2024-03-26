@@ -4,7 +4,7 @@ info:
   contact: {}
   version: "1.0"
 servers:
-  - url: https://localhost:3000/api
+  - url: https://irms.onrender.com/api
     variables: {}
 paths:
   /authorize/user:

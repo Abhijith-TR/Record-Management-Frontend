@@ -23,7 +23,7 @@ const Login = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        "http://localhost:5000/api/authorize/admin",
+        "https://irms.onrender.com/api/authorize/admin",
         {
           email,
           password,
@@ -38,7 +38,7 @@ const Login = () => {
     } catch (error) {
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/api/authorize/user",
+          "https://irms.onrender.com/api/authorize/user",
           {
             email,
             password,

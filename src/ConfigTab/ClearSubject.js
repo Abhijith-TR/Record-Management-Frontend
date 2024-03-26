@@ -16,7 +16,7 @@ const ClearSubject = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.delete(
-          `http://localhost:5000/api/super/delete/records/${subjectCode}`,
+          `https://irms.onrender.com/api/super/delete/records/${subjectCode}`,
           {
             headers: {
               Authorization: token,

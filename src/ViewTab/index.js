@@ -32,8 +32,8 @@ const View = () => {
     } else if (!subjectCode) {
       setLoading(true);
       const url = isAdmin
-        ? `http://localhost:5000/api/admin/records/get/${searchValue}`
-        : `http://localhost:5000/api/user/records/${searchValue}`;
+        ? `https://irms.onrender.com/api/admin/records/get/${searchValue}`
+        : `https://irms.onrender.com/api/user/records/${searchValue}`;
       try {
         const { data } = await axios.get(url, {
           headers: {
@@ -55,7 +55,7 @@ const View = () => {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          `http://localhost:5000/api/admin/records/${searchValue}`,
+          `https://irms.onrender.com/api/admin/records/${searchValue}`,
           {
             headers: {
               Authorization: token,

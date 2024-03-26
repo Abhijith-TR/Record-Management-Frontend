@@ -23,7 +23,7 @@ const Insert = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.post(
-        "http://localhost:5000/api/admin/notif",
+        "https://irms.onrender.com/api/admin/notif",
         {
           subjectCode,
           announcement,

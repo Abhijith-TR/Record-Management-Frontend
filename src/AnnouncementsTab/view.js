@@ -26,7 +26,7 @@ const View = () => {
       const token = document.cookie.slice(14);
       const route = isAdmin ? "admin" : "user";
       const { data } = await axios.get(
-        `http://localhost:5000/api/${route}/notif/${subjectCode}`,
+        `https://irms.onrender.com/api/${route}/notif/${subjectCode}`,
         {
           headers: {
             Authorization: token,
@@ -52,7 +52,7 @@ const View = () => {
     try {
       const token = document.cookie.slice(14);
       const { data } = await axios.delete(
-        `http://localhost:5000/api/admin/notif/${onDisplay}/${_id}`,
+        `https://irms.onrender.com/api/admin/notif/${onDisplay}/${_id}`,
         {
           headers: {
             Authorization: token,
@@ -64,7 +64,7 @@ const View = () => {
       console.log(data);
       setErrMsg(data.msg);
       const { data: info } = await axios.get(
-        `http://localhost:5000/api/admin/notif/${onDisplay}`,
+        `https://irms.onrender.com/api/admin/notif/${onDisplay}`,
         {
           headers: {
             Authorization: token,

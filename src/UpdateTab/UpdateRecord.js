@@ -18,7 +18,7 @@ const UpdateRecord = () => {
       try {
         const token = document.cookie.slice(14);
         const { data } = await axios.patch(
-          `http://localhost:5000/api/admin/records/${entryNumber}/${subjectCode}`,
+          `https://irms.onrender.com/api/admin/records/${entryNumber}/${subjectCode}`,
           {
             grade,
           },
