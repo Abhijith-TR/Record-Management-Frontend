@@ -344,3 +344,21 @@ nav {
     display: block;
   }
 }
+
+.inactive-link,
+.inactive-link:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.active-main-link,
+.active-main-link:hover {
+  color: #ffff80;
+  text-decoration: none;
+}
+
+.active-sub-link,
+.active-sub-link:hover {
+  color: yellow;
+  text-decoration: none;
+}

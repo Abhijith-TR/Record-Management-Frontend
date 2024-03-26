@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ImSpinner6 } from "react-icons/im";
 
-const Insert = () => {
+const InsertRecord = () => {
   const [loading, setLoading] = useState(false);
   const [entryNumber, setEntryNumber] = useState("");
   const [grade, setGrade] = useState("Select the Grade");
@@ -137,4 +137,4 @@ const Insert = () => {
   );
 };
 
-export default Insert;
+export default InsertRecord;
